@@ -3,3 +3,13 @@ margin: 0;
 padding: 0;
 box-sizing: border-box;
 }
+
+/* line 80, ../sass/styles.scss */
+#randomWord {
+    font-size: 3em;
+    font-family: "Arial", serif;
+    width: 100%;
+    text-transform: uppercase;
+    display: block;
+  }
+ 
