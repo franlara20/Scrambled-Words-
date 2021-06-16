@@ -4,7 +4,23 @@ padding: 0;
 box-sizing: border-box;
 }
 
-/* line 80, ../sass/styles.scss */
+h1 {
+  font-size: 2em;
+  display: inline-block;
+  float: left;
+  padding-left: 1em;
+  text-align: center;
+}
+
+#screenGame p {
+  display: inline-block;
+  margin-right: 1em;
+  margin-bottom: 3em;
+  margin-top: 3em;
+  font-weight: 500;
+  font-size: 1.5em;
+}
+
 #randomWord {
     font-size: 3em;
     font-family: "Arial", serif;
@@ -13,3 +29,6 @@ box-sizing: border-box;
     display: block;
   }
  
+  .hidden {
+    visibility: hidden;
+  }

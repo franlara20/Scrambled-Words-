@@ -40,15 +40,18 @@ const fiveLettersWords = [
 const submitBtn = document.getElementById("submit");
 const resetBtn = document.getElementById("reset");
 const startBtn = document.getElementById("start");
+const playBtn = document.getElementById("play");
 const levelDisplay = document.getElementById("level");
 const scoreDisplay = document.getElementById("score");
 const attemptsDisplay = document.getElementById("attempts");
+const wordRandom = document.getElementById("randomWord-container");
 
 
-let level = 1;
+let level = 3;
 let score = 0;
 let attempts = 0;
 let correctWord = 0;
+let originalWord;
 
 // Function to reset all the values and start the game again.
 function reset(){
@@ -58,11 +61,31 @@ attempts = 0;
 correctWord = 0;
 displayUpdate();
 }
+// Function to start the game when we click on Start the Game
+function start(){
+    screenGame.classList.remove("hidden");
+    this.style.display="none";
+    }
 
-// DOM reset botton
-resetBtn.addEventListener('click',function()
-reset();
-)
+// Execute function start when click the btn
+playBtn.addEventListener('click',start);
+
+//Function to get a random word and scramble the word
+
+function originalRandomWord(word){
+    originalWord = word[Math.floor(Math.random() * word.length + 1) - 1];
+    console.log(originalWord);
+    return originalWord;
+  }
+
+function scrambledWord(originalWord){
+    let temp = originalWord.split("");
+    temp.sort();
+    console.log(temp);
+    let scrambledFinalWord = temp.join("");
+    console.log(scrambledFinalWord);
+    return scrambledFinalWord;
+    }
 
 // Update display after reset or losing a game
 function displayUpdate(){
@@ -85,3 +108,24 @@ if (attempts == 3){
     reset();
 }
 }
+function gameLevel() {
+    if (level == 1) {
+        originalRandomWord(threeLettersWords);
+    }
+    else if (level == 2) {
+        originalRandomWord(fourLettersWords);
+    } 
+    else if (level == 3) {
+        originalRandomWord(fiveLettersWords);
+    }
+    wordRandom.innerText = scrambledWord(originalWord);
+
+  }
+
+  gameLevel();
+
+// DOM reset botton
+/* resetBtn.addEventListener('click',function()
+reset();
+)
+*/

@@ -13,27 +13,25 @@
     <h1>Scrambled Words</h1>
     </nav>
 
-    <!--
-    <div>
-        <button id="start">Click here to play</button> 
-    </div>
-    -->
-    <div id="infoBoard">
-    <p>Level: <span id="level">1</span></p>
-    <p>Score: <span id="score">0</span></p>
-    <p>Attempts:<span id="attempts">0</span></p>
+    <button id="play" type="button">Start the game</button>
+    
+    <div id="screenGame" class="hidden">
+        <p>Level: <span id="level">1</span></p>
+        <p>Score: <span id="score">0</span></p>
+        <p>Attempts:<span id="attempts">0</span></p>
+    
+
+        <div id="randomWord-container"></div>
+
+        <div id="gameBoard">
+            <input id="word" type="text" placeholder="Type your word">
+            <button id="submit">Submit</button>
+            <button id="reset">Reset</button>
+        </div>
+
     </div>
 
-    <div id="randomWord-container">
-        <p id="randomWord"></p>
-    </div>
-
-    <div id="gameBoard">
-        <input id="word" type="text" placeholder="Type your word">
-        <button id="submit">Submit</button>
-        <button id="reset">Reset</button>
-    </div>
-
+    <script src="js/script.js"></script>
 
 </body>
 </html>
