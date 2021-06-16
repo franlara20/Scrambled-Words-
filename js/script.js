@@ -86,6 +86,7 @@ function start(){
     screenGame.classList.remove("hidden");
     this.style.display="none";
     }
+// Function to reset the game
 function resetGame(){
     level = 1;
     score = 0;
@@ -99,7 +100,7 @@ function resetGame(){
 // Execute function start when click the btn
 playBtn.addEventListener('click',start);
 
-//Function to get a random word and scramble the word
+//Function to get a random word
 
 function originalRandomWord(word){
     originalWord = word[Math.floor(Math.random() * word.length + 1) - 1];
@@ -107,6 +108,7 @@ function originalRandomWord(word){
     return originalWord;
   }
 
+//Function to take the original Word, split it, sort it alphabetically and save it to new Array. Create another new Array and join all the letters
 function scrambledWord(originalWord){
     let temp = originalWord.split("");
     temp.sort();
@@ -116,21 +118,12 @@ function scrambledWord(originalWord){
     return scrambledFinalWord;
     }
 
-// Update display after reset or losing a game
-/*
-function displayReset(){
-    levelDisplay = level;
-    scoreDisplay = score;
-    attemptsDisplay = attempts;
-}
-*/
 function displayUpdate(){
     levelDisplay.innerText = level;
     scoreDisplay.innerText = score;
-    //attemptsDisplay.innerText = attempts;
 }
 
-//Check word if it is correct or not
+//Check word if it is correct or not. Check if attempts is bigger than 2 and if it is so reset the game.
 function checkWord(){
     let tempWord = typeWord.value;
     if(attempts == 2){
@@ -145,7 +138,7 @@ function checkWord(){
     gameLevel();
     displayUpdate();
     }
-   
+
     else {
     correctOrNot.innerText = "Wrong"; 
     typeWord.value="";   
