@@ -1,13 +1,12 @@
 const threeLettersWords = [
     "the",
     "and",
-    "for", 
+    "one", 
     "are", 
-    "but", 
-    "not",
+    "but",
     "you",
-    "all",
-    "any",
+    "age",
+    "two",
     "can"
 ]
 
@@ -45,22 +44,15 @@ const levelDisplay = document.getElementById("level");
 const scoreDisplay = document.getElementById("score");
 const attemptsDisplay = document.getElementById("attempts");
 const wordRandom = document.getElementById("randomWord-container");
+const typeWord = document.querySelector('input');
+const correctOrNot = document.getElementById('correctOrNotWord');
 
 
-let level = 3;
+let level = 1;
 let score = 0;
 let attempts = 0;
-let correctWord = 0;
 let originalWord;
 
-// Function to reset all the values and start the game again.
-function reset(){
-level = 1;
-score = 0;
-attempts = 0;
-correctWord = 0;
-displayUpdate();
-}
 // Function to start the game when we click on Start the Game
 function start(){
     screenGame.classList.remove("hidden");
@@ -88,26 +80,39 @@ function scrambledWord(originalWord){
     }
 
 // Update display after reset or losing a game
-function displayUpdate(){
+function displayReset(){
     levelDisplay = level;
     scoreDisplay = score;
     attemptsDisplay = attempts;
 }
 
+function displayUpdate(){
+    levelDisplay.innerText = level;
+    scoreDisplay.innerText = score;
+    attemptsDisplay.innerText = attempts;
+}
+
 //Check word if it is correct or not
 function checkWord(){
-
-//Check if correct is 2, then next level
-if(correct == 2){
+    let tempWord = typeWord.value;
+    if(tempWord === originalWord){
+    correctOrNot.innerText = "Correct";
+    typeWord.value="";
     level += 1;
-    correct = 0;
+    score += 1;
+    gameLevel();
+    displayUpdate();
+    }
+    else {
+    correctOrNot.innerText = "Wrong"; 
+    typeWord.value="";   
+    attempts += 1;
+    displayUpdate();
+    }
 }
-//Check if attempts is 3, then reset the game
-if (attempts == 3){
-    console.log()
-    reset();
-}
-}
+
+submitBtn.addEventListener('click',checkWord);
+
 function gameLevel() {
     if (level == 1) {
         originalRandomWord(threeLettersWords);
@@ -125,7 +130,4 @@ function gameLevel() {
   gameLevel();
 
 // DOM reset botton
-/* resetBtn.addEventListener('click',function()
-reset();
-)
-*/
+resetBtn.addEventListener('click',displayReset);
