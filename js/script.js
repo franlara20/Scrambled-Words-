@@ -79,7 +79,6 @@ const correctOrNot = document.getElementById('correctOrNotWord');
 let level = 1;
 let score = 0;
 let attempts = 0;
-let nextLevel = 0;
 let originalWord;
 
 // Function to start the game when we click on Start the Game
@@ -95,7 +94,6 @@ function resetGame(){
     scoreDisplay.innerText = score;
     attemptsDisplay.innerText = attempts;
     gameLevel();
-    //wordRandom.innerText = "";
 }
 
 // Execute function start when click the btn
@@ -136,7 +134,6 @@ function displayUpdate(){
 function checkWord(){
     let tempWord = typeWord.value;
     if(attempts == 2){
-        
         resetGame();
     }
     if(tempWord === originalWord){
