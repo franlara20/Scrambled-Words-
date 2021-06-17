@@ -64,6 +64,19 @@ const sevenLettersWords = [
     "horizon"
 ]
 
+const eightLettersWords = [
+    "exchange",
+    "magazine",
+    "frequent",
+    "judgment",
+    "champion",
+    "question",
+    "capacity",
+    "birthday",
+    "organize",
+    "majority"
+]
+
 const submitBtn = document.getElementById("submit");
 const resetBtn = document.getElementById("reset");
 const startBtn = document.getElementById("start");
@@ -94,6 +107,8 @@ function resetGame(){
     levelDisplay.innerText = level;
     scoreDisplay.innerText = score;
     attemptsDisplay.innerText = attempts;
+    correctOrNot.innerText = ""; 
+    typeWord.value="";
     gameLevel();
 }
 
@@ -126,9 +141,6 @@ function displayUpdate(){
 //Check word if it is correct or not. Check if attempts is bigger than 2 and if it is so reset the game.
 function checkWord(){
     let tempWord = typeWord.value.toLowerCase();
-    if(attempts == 2){
-        resetGame();
-    }
     if(tempWord === originalWord){
     if(correctOrNot.classList.value.includes('wrong')){
         correctOrNot.classList.remove('wrong');
@@ -137,7 +149,6 @@ function checkWord(){
     correctOrNot.innerText = "Correct";
     typeWord.value="";
     level += 1;
-    //console.log(level)
     score += 1;
     gameLevel();
     displayUpdate();
@@ -147,12 +158,19 @@ function checkWord(){
     if(correctOrNot.classList.value.includes('correct')){
         correctOrNot.classList.remove('correct');
     }
+    if(attempts == 2){
+        alert('Game Over!');
+        //attemptsDisplay.innerText = 0;
+        resetGame()
+    }
+    else{
     correctOrNot.classList.add('wrong');
     correctOrNot.innerText = "Wrong"; 
     typeWord.value="";   
-    attempts += 1;
+    attempts++;
     attemptsDisplay.innerText = attempts;
     }
+}
 }
 
 submitBtn.addEventListener('click',checkWord);
@@ -172,6 +190,9 @@ function gameLevel() {
     }
     else if (level == 9 | level == 10){
         originalRandomWord(sevenLettersWords);
+    }
+    else if (level == 11 | level == 12){
+        originalRandomWord(eightLettersWords);
     }
     wordRandom.innerText = scrambledWord(originalWord);
 
