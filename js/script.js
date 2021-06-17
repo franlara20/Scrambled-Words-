@@ -104,7 +104,7 @@ playBtn.addEventListener('click',start);
 
 function originalRandomWord(word){
     originalWord = word[Math.floor(Math.random() * word.length + 1) - 1];
-    console.log(originalWord);
+    //console.log(originalWord);
     return originalWord;
   }
 
@@ -125,11 +125,15 @@ function displayUpdate(){
 
 //Check word if it is correct or not. Check if attempts is bigger than 2 and if it is so reset the game.
 function checkWord(){
-    let tempWord = typeWord.value;
+    let tempWord = typeWord.value.toLowerCase();
     if(attempts == 2){
         resetGame();
     }
     if(tempWord === originalWord){
+    if(correctOrNot.classList.value.includes('wrong')){
+        correctOrNot.classList.remove('wrong');
+    }
+    correctOrNot.classList.add('correct');
     correctOrNot.innerText = "Correct";
     typeWord.value="";
     level += 1;
@@ -140,6 +144,10 @@ function checkWord(){
     }
 
     else {
+    if(correctOrNot.classList.value.includes('correct')){
+        correctOrNot.classList.remove('correct');
+    }
+    correctOrNot.classList.add('wrong');
     correctOrNot.innerText = "Wrong"; 
     typeWord.value="";   
     attempts += 1;

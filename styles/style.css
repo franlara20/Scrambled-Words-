@@ -2,6 +2,7 @@
 margin: 0;
 padding: 0;
 box-sizing: border-box;
+font-family: sans-serif;
 }
 
 h1 {
@@ -11,7 +12,6 @@ h1 {
   padding-left: 1em;
   text-align: center;
 }
-
 .bodyClass {
   background: url("../images/image2.jpeg") 0 0 no-repeat;
   height: 710px;
@@ -19,7 +19,6 @@ h1 {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
 #play {
   cursor: pointer;
   width: 15em;
@@ -34,34 +33,60 @@ h1 {
   left: 50%;
   margin-left: -150px;
   top: 50%;
-  margin-top: -170px;
+  margin-top: -140px;
 }
 #play:hover {
-  background: wheat;
   transition: 0.2s background;
 }
-#randomWord {
-    font-size: 3em;
-    font-family: "Arial", serif;
-    width: 100%;
-    text-transform: uppercase;
-    display: block;
-  }
- 
-  .hidden {
-    visibility: hidden;
-  }
+#word {
+  width: 15em;
+  height: 4em;  
+}
+#gameBoard{
+  margin-top: 40px;
+}
+#submit,
+#reset{
+  cursor: pointer;
+  width: 15em;
+  height: 4em;
+  text-transform: uppercase;
+  background: white;
+}
 
-  #screenGame{
-    text-align: center;
-    margin: 2em auto;
-    width: 65%;
-  }
-  #screenGame p {
-    display: inline-block;
-    margin-right: 1em;
-    margin-bottom: 3em;
-    font-weight: 500;
-    font-size: 1.5em;
-  }
+#randomWord-container {
+  font-size: 3em;
+  text-transform: uppercase;
+  display: block;
+  margin-top: 40px;
+}
+ 
+.hidden {
+  visibility: hidden;
+}
+
+#screenGame{
+  text-align: center;
+  margin: 2em auto;
+  width: 65%;
+}
+#screenGame p {
+  display: inline-block;
+  margin-right: 1em;
+  margin-bottom: 1em;
+  font-weight: 500;
+  font-size: 1.5em;
+}
+#correctOrNotWord{
+  margin-top: 40px;
+  margin-left: 20px;  
+}
+.wrong {
+  color: red;
+  text-transform: uppercase;
+}
+.correct{
+  color:green;
+  text-transform: uppercase;
+}
   
