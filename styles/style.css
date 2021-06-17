@@ -13,7 +13,7 @@ h1 {
 }
 
 .bodyClass {
-  background: url("/images/image2.jpeg") 0 0 no-repeat;
+  background: url("../images/image2.jpeg") 0 0 no-repeat;
   height: 710px;
   background-position: center;
   background-repeat: no-repeat;
